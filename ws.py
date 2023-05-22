@@ -16,6 +16,13 @@ rcon = mcrcon.MCRcon(server_ip, rcon_password, rcon_port)
 
 rcon.connect()
 
+def check_worldedit():
+    response = rcon.command("plugins").lower()
+    if("worldedit" in response):
+        return True
+    else:
+        return False
+
 def exec(command):
     response = rcon.command(command)
     print(response) # Print the server's response
