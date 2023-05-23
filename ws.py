@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 import os
 import mcrcon
 
-class Ws:
+class Server:
 
     load_dotenv()
 
@@ -48,3 +48,17 @@ class Ws:
 
     def exit(self):
         self.rcon.disconnect()
+
+class Pos:
+
+    x = 0
+    y = 0
+    z = 0
+
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def get_coords(self, dx, dy, dz):
+        return "{x_coord},{y_coord},{z_coord}".format(x_coord=self.x+dx, y_coord=self.y+dy, z_coord=self.z+dz)
