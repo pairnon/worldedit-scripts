@@ -22,20 +22,24 @@ class Ws:
     operation_counter = 0
 
     def __init__(self):
-        pass
+        if(self.check_worldedit() == False):
+            print("ERROR: WorldEdit not present on selected server")
+        else:
+            print("successfully found server with WorldEdit")
 
     def get_operations(self):
         return self.operation_counter
     
     def exec(self, command):
         if(command[0:1:] != "/"):
-            print("error: command must start with '/'")
+            print("ERROR: command must start with '/'")
             return
         self.rcon.connect()
         response = self.rcon.command(command[1::])
         print(response) # Print the server's response
 
     def check_worldedit(self):
+        self.rcon.connect()
         response = self.rcon.command("plugins").lower()
         if("worldedit" in response):
             return True
