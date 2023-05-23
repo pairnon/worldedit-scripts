@@ -90,3 +90,6 @@ class Command:
 
     def set(self, pattern):
         self.server.exec("//set {pattern}".format(pattern=pattern))
+
+    def say(self, arg):
+        self.server.exec("/say {arg}".format(arg=arg))
