@@ -2,36 +2,45 @@ from dotenv import load_dotenv
 import os
 import mcrcon
 
-load_dotenv()
+class Ws:
 
-IP = os.getenv("IP")
-RCON_PASS = os.getenv("RCON_PASS")
-RCON_PORT = os.getenv("RCON_PORT")
+    load_dotenv()
 
-server_ip = IP
-rcon_password = RCON_PASS
-rcon_port = int(RCON_PORT)
+    IP = os.getenv("IP")
+    RCON_PASS = os.getenv("RCON_PASS")
+    RCON_PORT = os.getenv("RCON_PORT")
 
-tls_mode = 0
-timeout = 10
+    server_ip = IP
+    rcon_password = RCON_PASS
+    rcon_port = int(RCON_PORT)
 
-rcon = mcrcon.MCRcon(server_ip, rcon_password, rcon_port, tls_mode, timeout)
+    tls_mode = 0
+    timeout = 10
 
-rcon.connect()
+    rcon = mcrcon.MCRcon(server_ip, rcon_password, rcon_port, tls_mode, timeout)
 
-def check_worldedit():
-    response = rcon.command("plugins").lower()
-    if("worldedit" in response):
-        return True
-    else:
-        return False
+    operation_counter = 0
 
-def exec(command):
-    if(command[0:1:] != "/"):
-        print("error: command must start with '/'")
-        return
-    response = rcon.command(command[1::])
-    print(response) # Print the server's response
+    def __init__(self):
+        pass
 
-def exit():
-    rcon.disconnect()
+    def get_operations(self):
+        return self.operation_counter
+    
+    def exec(self, command):
+        if(command[0:1:] != "/"):
+            print("error: command must start with '/'")
+            return
+        self.rcon.connect()
+        response = self.rcon.command(command[1::])
+        print(response) # Print the server's response
+
+    def check_worldedit(self):
+        response = self.rcon.command("plugins").lower()
+        if("worldedit" in response):
+            return True
+        else:
+            return False
+
+    def exit(self):
+        self.rcon.disconnect()
