@@ -15,7 +15,7 @@ class Server:
     rcon_port = int(RCON_PORT)
 
     tls_mode = 0
-    timeout = 10
+    timeout = 20
 
     rcon = mcrcon.MCRcon(server_ip, rcon_password, rcon_port, tls_mode, timeout)
 
