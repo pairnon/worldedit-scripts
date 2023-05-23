@@ -1,9 +1,9 @@
 from ws import *
 
-ws = Ws()
+server = Server()
 
-ws.exec("//world world")
-ws.exec("//pos1 0,0,0")
-ws.exec("//pos2 100,100,100")
-# ws.exec("//set tinted_glass")
-# ws.exec("//set air")
+server.exec("//world world")
+server.exec("//pos1 0,0,0")
+server.exec("//pos2 100,100,100")
+# server.exec("//set tinted_glass")
+# server.exec("//set air")
