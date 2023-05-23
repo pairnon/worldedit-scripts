@@ -65,3 +65,28 @@ class Pos:
     
     def get_coords(self):
         return "{x_coord},{y_coord},{z_coord}".format(x_coord=self.x, y_coord=self.y, z_coord=self.z)
+    
+class Command:
+
+    server = Server()
+
+    def __init__(self):
+        pass
+
+    def pos1(self, pos):
+        self.server.exec("//pos1 {pos}".format(pos=pos.get_coords()))
+
+    def pos2(self, pos):
+        self.server.exec("//pos2 {pos}".format(pos=pos.get_coords()))
+
+    def d_pos1(self, pos, dx, dy, dz):
+        self.server.exec("//pos1 {pos}".format(pos=pos.get_dcoords(dx, dy, dz)))
+
+    def d_pos2(self, pos, dx, dy, dz):
+        self.server.exec("//pos2 {pos}".format(pos=pos.get_dcoords(dx, dy, dz)))
+
+    def world(self, world):
+        self.server.exec("//world {world}".format(world=world))
+
+    def set(self, pattern):
+        self.server.exec("//set {pattern}".format(pattern=pattern))
