@@ -60,5 +60,8 @@ class Pos:
         self.y = y
         self.z = z
 
-    def get_coords(self, dx, dy, dz):
+    def get_dcoords(self, dx, dy, dz):
         return "{x_coord},{y_coord},{z_coord}".format(x_coord=self.x+dx, y_coord=self.y+dy, z_coord=self.z+dz)
+    
+    def get_coords(self):
+        return "{x_coord},{y_coord},{z_coord}".format(x_coord=self.x, y_coord=self.y, z_coord=self.z)
