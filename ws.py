@@ -27,7 +27,10 @@ def check_worldedit():
         return False
 
 def exec(command):
-    response = rcon.command(command)
+    if(command[0:1:] != "/"):
+        print("error: command must start with '/'")
+        return
+    response = rcon.command(command[1::])
     print(response) # Print the server's response
 
 def exit():
