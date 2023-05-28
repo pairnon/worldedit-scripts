@@ -1,7 +1,5 @@
 from ws import *
 
-server = Server()
-
 c = Command()
 
 p = Pos(0, 0, 0)
